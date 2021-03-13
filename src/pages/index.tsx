@@ -21,15 +21,15 @@ interface HomeProps {
 export default function Home({ level, currentExperience, challengesCompleted}: HomeProps) {
   return (
     <ChallengesProvider
-      level={level} 
-      currentExperience={currentExperience} 
+      level={level}
+      currentExperience={currentExperience}
       challengesCompleted={challengesCompleted}
     >
       <CountdownProvider>
         <main className={styles.container}>
           <Head>
             <title>move.it | Início</title>
-          </Head> 
+          </Head>
 
           <ExperienceBar />
 
