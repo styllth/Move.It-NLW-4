@@ -1,15 +1,20 @@
-import { useChallenges } from '../hooks/useChallenges';
+import { useChallenges } from "../hooks/useChallenges";
 
-import styles from '../styles/components/Profile.module.css';
+import styles from "../styles/components/Profile.module.css";
+import { useUser } from "../hooks/useUser";
 
 export function Profile() {
   const { level } = useChallenges();
+  const { user } = useUser();
 
   return (
     <div className={styles.profileContainer}>
-      <img src="https://github.com/diego3g.png" alt="Diego Fernandes "/>
+      <img
+        src={user.avatarUrl ?? "https://github.com/styllth.png"}
+        alt="avatar"
+      />
       <div>
-        <strong>Diego Fernandes</strong>
+        <strong>{user.name ?? "nome"}</strong>
         <p>
           <img src="icons/level.svg" alt="Level" />
           Level {level}

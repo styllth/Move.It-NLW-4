@@ -1,19 +1,24 @@
 .container {
+  display: flex;
   height: 100vh;
+}
+
+.challengesContainer {
   max-width: 992px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
+  position: relative;
 
   display: flex;
   flex-direction: column;
 }
 
-.container section {
+.challengesContainer section {
   flex: 1;
 
   display: grid;
+  padding-top: 1.5rem;
   grid-template-columns: 1fr 1fr;
   gap: 6.25rem;
   align-content: center;
 }
-
