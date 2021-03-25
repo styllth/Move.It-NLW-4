@@ -1,0 +1,23 @@
+[
+  {
+    "username": "Fulano",
+    "imagePath": "/user.svg",
+    "level": 4,
+    "currentExperience": 1500,
+    "challengesCompleted": 8
+  },
+  {
+    "username": "Ciclano",
+    "imagePath": "/user.svg",
+    "level": 3,
+    "currentExperience": 1100,
+    "challengesCompleted": 5
+  },
+  {
+    "username": "Beltrano",
+    "imagePath": "/user.svg",
+    "level": 2,
+    "currentExperience": 900,
+    "challengesCompleted": 4
+  }
+]

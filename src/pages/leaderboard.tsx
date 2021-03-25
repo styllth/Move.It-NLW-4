@@ -1,9 +1,12 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
+import Cookies from "js-cookie";
 
 import { Sidebar } from "components/Sidebar";
 
 import styles from "styles/pages/Leaderboard.module.css";
+
+import leadersboard from "../../leaderboard.json";
 
 interface LeaderboardUsers {
   username: string;
@@ -14,10 +17,10 @@ interface LeaderboardUsers {
 }
 
 interface LeaderboardProps {
-  Leaderboard: LeaderboardUsers[];
+  leaders: LeaderboardUsers[];
 }
 
-export default function leaderboard({ Leaderboard }: LeaderboardProps) {
+export default function leaderboard({ leaders }: LeaderboardProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -36,37 +39,34 @@ export default function leaderboard({ Leaderboard }: LeaderboardProps) {
           <p>EXPERIÊNCIA</p>
         </section>
 
-        {Leaderboard.map((user, index) => (
-          <section className={styles.users}>
+        {leaders.map((leader, index) => (
+          <div className={styles.users}>
             <div className={styles.position}>{index + 1}</div>
 
             <div className={styles.userInfo}>
               <div className={styles.user}>
-                <img
-                  src={`http://localhost:3333/files/${user.imagePath}`}
-                  alt="user image"
-                />
+                <img src={leader.imagePath} alt="user image" />
 
                 <div>
-                  <strong>{user.username}</strong>
+                  <strong>{leader.username}</strong>
                   <p>
                     <img src="icons/level.svg" alt="level" />
-                    Level {user.level}
+                    Level {leader.level}
                   </p>
                 </div>
               </div>
 
               <div className={styles.text}>
-                <p>{user.challengesCompleted}</p>
+                <p>{leader.challengesCompleted}</p>
                 <p>completados</p>
               </div>
 
               <div className={styles.text}>
-                <p>{user.currentExperience}</p>
+                <p>{leader.currentExperience}</p>
                 <p>xp</p>
               </div>
             </div>
-          </section>
+          </div>
         ))}
       </div>
     </div>
@@ -74,11 +74,11 @@ export default function leaderboard({ Leaderboard }: LeaderboardProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const Leaderboard = [];
+  const leaders = leadersboard;
 
   return {
     props: {
-      Leaderboard,
+      leaders,
     },
     revalidate: 60,
   };
