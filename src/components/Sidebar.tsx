@@ -2,8 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
-import styles from "styles/components/Sidebar.module.css";
-import { useUser } from "hooks/useUser";
+import styles from "../styles/components/Sidebar.module.css";
+import { useUser } from "../hooks/useUser";
 
 interface SidebarProps {
   page: "dashboard" | "leaderboard";
