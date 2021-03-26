@@ -10,11 +10,11 @@ export function Profile() {
   return (
     <div className={styles.profileContainer}>
       <img
-        src={user.avatarUrl ?? "https://github.com/styllth.png"}
+        src={user?.avatar_url ?? "https://github.com/styllth.png"}
         alt="avatar"
       />
       <div>
-        <strong>{user.name ?? "nome"}</strong>
+        <strong>{user?.name ?? "nome"}</strong>
         <p>
           <img src="icons/level.svg" alt="Level" />
           Level {level}

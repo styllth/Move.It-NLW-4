@@ -83,13 +83,12 @@ export default function loginContainer() {
             autoComplete="off"
             type="text"
             placeholder="Digite seu username"
-            value={user.username}
             onChange={handleUsernameChange}
           />
           <button
             type="submit"
             className={`${
-              user.username?.length >= 3 ? styles.buttonActive : ""
+              user?.username?.length >= 3 ? styles.buttonActive : ""
             }`}
           >
             <img src="/icons/arrow-right.svg" alt="" />

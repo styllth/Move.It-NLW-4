@@ -1,7 +1,7 @@
 export interface User{
   id: number;
   name: string;
+  login:string;
   username: string,
-  avatarUrl: string,
-  userProfileUrl: string,
+  avatar_url: string,
 }

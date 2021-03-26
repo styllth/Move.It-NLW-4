@@ -3,20 +3,23 @@ import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
 import styles from "styles/components/Sidebar.module.css";
+import { useUser } from "hooks/useUser";
 
 interface SidebarProps {
   page: "dashboard" | "leaderboard";
 }
 
 export function Sidebar({ page }: SidebarProps) {
+  const { signOut } = useUser();
   const router = useRouter();
 
   function handleLogout() {
+    signOut();
     Cookies.remove("currentUser");
     Cookies.remove("level");
     Cookies.remove("currentExperience");
     Cookies.remove("challengesCompleted");
-    router.push("/login");
+    router.reload();
   }
 
   return (

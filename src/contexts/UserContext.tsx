@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GetServerSideProps } from "next";
 import { createContext, ReactNode, useState } from "react";
 
 import { User } from "auth/userInterface";
@@ -13,6 +12,7 @@ interface UserContextData {
   setUser(user: User): void;
   signIn: (username: string) => void;
   signOut: () => void;
+  isLogged: boolean;
 }
 
 export const UserContext = createContext({} as UserContextData);
@@ -22,6 +22,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   async function signIn(username: string) {
     const responseOfUser = await axios.get(`api/user/${username}`);
+
     setUser(responseOfUser.data);
   }
 
@@ -30,7 +31,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   }
 
   return (
-    <UserContext.Provider value={{ user, setUser, signIn, signOut }}>
+    <UserContext.Provider value={{ user, setUser, signIn, signOut, isLogged : !!user }}>
       {children}
     </UserContext.Provider>
   );
